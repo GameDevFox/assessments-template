@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -49,7 +50,7 @@ const filterLabels = {
   alpha3Code: 'Country Code',
 };
 
-export const CountryTable = (props: Props) => {
+export const Countries = (props: Props) => {
   const { value } = props;
 
   const { sort, getSort, getSortOrder, setSort, clearSort } = useSort<CountryData>();
@@ -105,7 +106,9 @@ export const CountryTable = (props: Props) => {
         <tbody>
           {sortedValue.map(item => (
             <tr key={item.name}>
-              <td>{item.name}</td>
+              <td>
+                <Link to={`/country/${item.alpha3Code}`}>{item.name}</Link>
+              </td>
               <td>{item.capital}</td>
               <td>{item.region}</td>
               <td>{item.alpha3Code}</td>
